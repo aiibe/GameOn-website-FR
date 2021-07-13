@@ -1,0 +1,14 @@
+// Utils
+@import "./utils/variables";
+@import "./utils/mixins";
+
+// Base
+@import "./base/reset";
+@import "./base/typography";
+
+// Layout
+@import "./layout/header";
+@import "./layout/footer";
+
+// Pages
+@import "./pages/landing";
