@@ -1,0 +1,83 @@
+.nav {
+  @extend %container;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &__logo {
+    height: 19px;
+  }
+
+  &__menu-toggle {
+    cursor: pointer;
+  }
+
+  &__menu-toggle-icon {
+    color: $color-primary;
+  }
+
+  &__menu {
+    display: none;
+
+    &--show {
+      display: block;
+      position: relative;
+      flex: 100%;
+    }
+  }
+
+  &__menu-links {
+    @extend %bg-color;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+  }
+
+  &__menu-item {
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+
+    &--active,
+    &:hover {
+      background-color: $color-primary;
+    }
+  }
+
+  @include screen-above(tablet) {
+    &__logo {
+      height: 50px;
+    }
+
+    &__menu {
+      display: block;
+    }
+
+    &__menu-toggle {
+      display: none;
+    }
+
+    &__menu-links {
+      background-color: transparent;
+      flex-direction: row;
+      position: static;
+      margin: 0;
+    }
+
+    &__menu-item {
+      color: initial;
+      border-radius: 8px;
+      padding: 9px 15px;
+
+      &--active,
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}

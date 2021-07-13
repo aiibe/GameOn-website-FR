@@ -1,30 +1,11 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+const menu = document.querySelector(".nav__menu");
+const menuToggler = document.querySelector(".nav__menu-toggle");
 
-// DOM Elements
-const closeBtn = document.querySelector(".close");
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
-}
-
-// Attach close event
-closeBtn.addEventListener("click", closeModal);
-
-// Close modal form
-function closeModal() {
-  modalbg.style.display = "none";
-}
+// Show/Hide Menu on click
+menuToggler.addEventListener("click", () => {
+  let defaultClass = "nav__menu";
+  menu.className =
+    menu.className === defaultClass
+      ? `${defaultClass} ${defaultClass}--show` // Show menu
+      : defaultClass; // Hide menu default
+});

@@ -1,0 +1,23 @@
+// Breakpoints
+@mixin screen-above($breakpoint) {
+  // Larger than mobile
+  @if $breakpoint==mobile {
+    @media (min-width: 650px) {
+      @content;
+    }
+  }
+
+  // Larger than tablet
+  @if $breakpoint==tablet {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
+
+  // Larger than desktop
+  @if $breakpoint==desktop {
+    @media (min-width: 1920px) {
+      @content;
+    }
+  }
+}
