@@ -1,3 +1,68 @@
 .hero {
   @extend %container;
+
+  &__headline {
+    font-weight: 500;
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  &__background {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  &__signup {
+    text-align: center;
+  }
+
+  @include screen-above(tablet) {
+    &__content {
+      margin-top: 60px;
+      position: relative;
+      padding: 56px;
+      color: white;
+      box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.25);
+      background-color: #232323;
+      border-radius: 8px;
+    }
+
+    &__headline {
+      position: relative;
+      z-index: 1;
+      font-size: 96px;
+      max-width: 670px;
+      margin-bottom: 60px;
+    }
+
+    &__text {
+      font-size: 24px;
+      max-width: 430px;
+      margin-bottom: 60px;
+    }
+
+    &__background {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60%;
+      height: 100%;
+    }
+
+    &__signup {
+      text-align: initial;
+      margin: 0;
+    }
+  }
+}
+
+.modal {
+  display: none;
 }
