@@ -8,6 +8,10 @@ button {
   font-weight: 500;
   font-family: $font-text;
 
+  &:hover {
+    opacity: 0.9;
+  }
+
   @include screen-above(mobile) {
     font-size: 25px;
   }

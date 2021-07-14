@@ -58,68 +58,75 @@
         <div class="modal__content">
           <form name="reserve">
             <div class="reserve__data">
-              <label for="first">Prénom</label><br>
-              <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+              <label class="reserve__label" for="first">Prénom</label>
+              <input class="reserve__text" type="text" id="first" name="first" minlength="2" />
             </div>
             <div class="reserve__data">
-              <label for="last">Nom</label><br>
-              <input class="text-control" type="text" id="last" name="last" minlength="2" /><br>
+              <label class="reserve__label" for="last">Nom</label>
+              <input class="reserve__text" type="text" id="last" name="last" minlength="2" />
             </div>
             <div class="reserve__data">
-              <label for="email">E-mail</label><br>
-              <input class="text-control" type="email" id="email" name="email" /><br>
+              <label class="reserve__label" for="email">E-mail</label>
+              <input class="reserve__text" type="email" id="email" name="email" />
             </div>
             <div class="reserve__data">
-              <label for="birthdate">Date de naissance</label><br>
-              <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+              <label class="reserve__label" for="birthdate">Date de naissance</label>
+              <input class="reserve__text" type="date" id="birthdate" name="birthdate" />
             </div>
             <div class="reserve__data">
-              <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+              <label class="reserve__label" for="quantity">À combien de tournois GameOn avez-vous déjà participé
+                ?</label>
+              <input type="number" class="reserve__text" id="quantity" name="quantity" min="0" max="99">
             </div>
-            <p class="text-label">Quelles villes ?</p>
+
+            <p>Quelles villes ?</p>
             <div class="reserve__data">
-              <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
-              <label class="checkbox-label" for="location1">
-                <span class="checkbox-icon"></span>
-                New York</label>
-              <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco" />
-              <label class="checkbox-label" for="location2">
-                <span class="checkbox-icon"></span>
-                San Francisco</label>
-              <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle" />
-              <label class="checkbox-label" for="location3">
-                <span class="checkbox-icon"></span>
-                Seattle</label>
-              <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago" />
-              <label class="checkbox-label" for="location4">
-                <span class="checkbox-icon"></span>
-                Chicago</label>
-              <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston" />
-              <label class="checkbox-label" for="location5">
-                <span class="checkbox-icon"></span>
-                Boston</label>
-              <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland" />
-              <label class="checkbox-label" for="location6">
-                <span class="checkbox-icon"></span>
-                Portland</label>
+              <div class="reserve__radios">
+                <input class="reserve__radio" type="radio" id="location1" name="location" value="New York" />
+                <label class="reserve__label-radio" for="location1">
+                  <span class="reserve__icon-radio"></span>
+                  New York</label>
+
+                <input class="reserve__radio" type="radio" id="location2" name="location" value="San Francisco" />
+                <label class="reserve__label-radio" for="location2">
+                  <span class="reserve__icon-radio"></span>
+                  San Francisco</label>
+                <input class="reserve__radio" type="radio" id="location3" name="location" value="Seattle" />
+                <label class="reserve__label-radio" for="location3">
+                  <span class="reserve__icon-radio"></span>
+                  Seattle</label>
+                <input class="reserve__radio" type="radio" id="location4" name="location" value="Chicago" />
+                <label class="reserve__label-radio" for="location4">
+                  <span class="reserve__icon-radio"></span>
+                  Chicago</label>
+                <input class="reserve__radio" type="radio" id="location5" name="location" value="Boston" />
+                <label class="reserve__label-radio" for="location5">
+                  <span class="reserve__icon-radio"></span>
+                  Boston</label>
+                <input class="reserve__radio" type="radio" id="location6" name="location" value="Portland" />
+                <label class="reserve__label-radio" for="location6">
+                  <span class="reserve__icon-radio"></span>
+                  Portland</label>
+              </div>
             </div>
 
             <div class="reserve__data">
-              <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
-              <label class="checkbox2-label" for="checkbox1" required>
-                <span class="checkbox-icon"></span>
+              <input class="reserve__checkbox" type="checkbox" id="checkbox1" checked />
+              <label class="reserve__label-checkbox" for="checkbox1" required>
+                <span class="reserve__icon-checkbox"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
-              <br>
-              <input class="checkbox-input" type="checkbox" id="checkbox2" />
-              <label class="checkbox2-label" for="checkbox2">
-                <span class="checkbox-icon"></span>
+
+              <input class="reserve__checkbox" type="checkbox" id="checkbox2" />
+              <label class="reserve__label-checkbox" for="checkbox2">
+                <span class="reserve__icon-checkbox"></span>
                 Je souhaite être prévenu des prochains évènements.
               </label>
-              <br>
+
             </div>
-            <button class="reserve__submit" type="submit">C'est parti</button>
+            <div class="reserve__submit">
+              <button class="reserve__submit-button" type="submit">C'est parti</button>
+            </div>
           </form>
         </div>
       </div>

@@ -30,7 +30,7 @@
       padding: 56px;
       color: white;
       box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.25);
-      background-color: #232323;
+      background-color: $bg-color-black;
       border-radius: 8px;
     }
 
@@ -63,6 +63,115 @@
   }
 }
 
-.modal {
-  display: none;
+.reserve {
+  display: flex;
+  flex-direction: column;
+
+  &__data {
+    margin-bottom: 10px;
+  }
+
+  &__label {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    display: block;
+    width: 100%;
+    border: 0;
+    height: 50px;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 18px;
+  }
+
+  &__radios {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  &__radio,
+  &__checkbox {
+    display: none;
+
+    &:checked {
+      + .reserve__label-radio .reserve__icon-radio {
+        border-color: $color-secondary;
+        &::after {
+          opacity: 1;
+        }
+      }
+      + .reserve__label-checkbox .reserve__icon-checkbox {
+        background-color: $color-secondary;
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__label-radio,
+  &__label-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: inherit;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  &__icon-radio,
+  &__icon-checkbox {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #c4c4c4;
+    border-radius: 50%;
+    margin-right: 5px;
+
+    &::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background-color: $color-secondary;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+  }
+
+  &__icon-checkbox {
+    background-color: #c4c4c4;
+    border-radius: 4px;
+    border: 0;
+
+    &::after {
+      width: 7px;
+      height: 4px;
+      border-radius: 2px;
+      background: transparent;
+      border: 2px solid transparent;
+      border-bottom-color: #fff;
+      border-left-color: #fff;
+      transform: rotate(-55deg);
+      left: 21%;
+      top: 19%;
+      opacity: 0;
+    }
+  }
+
+  &__submit {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  &__submit-button {
+    font-size: 14px;
+  }
 }
