@@ -1,12 +1,25 @@
 .modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+
+  &--open {
+    visibility: visible;
+  }
+
   &__body {
     position: relative;
     background-color: $bg-color-black;
     border-radius: 8px;
     color: white;
     padding: 30px;
-    width: 30vw;
-    min-width: 500px;
   }
 
   &__close {
@@ -35,20 +48,14 @@
     }
   }
 
-  @include screen-above(tablet) {
+  @include screen-above(mobile) {
     position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &__body {
       padding: 40px;
+      width: 30vw;
+      min-width: 500px;
     }
   }
 }
