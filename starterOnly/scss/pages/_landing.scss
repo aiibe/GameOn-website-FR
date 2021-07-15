@@ -73,6 +73,23 @@ main {
 
   &__data {
     margin-bottom: 10px;
+
+    &::after {
+      display: block;
+      content: attr(data-error);
+      margin-top: 10px;
+      color: $color-primary;
+    }
+
+    &[data-error] {
+      .reserve__text {
+        border: 2px solid $color-primary;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
   }
 
   &__label {

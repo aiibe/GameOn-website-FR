@@ -59,11 +59,11 @@
           <form name="reserve">
             <div class="reserve__data">
               <label class="reserve__label" for="first">Prénom</label>
-              <input class="reserve__text" type="text" id="first" name="first" minlength="2" />
+              <input class="reserve__text" type="text" id="first" name="first" />
             </div>
             <div class="reserve__data">
               <label class="reserve__label" for="last">Nom</label>
-              <input class="reserve__text" type="text" id="last" name="last" minlength="2" />
+              <input class="reserve__text" type="text" id="last" name="last" />
             </div>
             <div class="reserve__data">
               <label class="reserve__label" for="email">E-mail</label>
@@ -76,38 +76,36 @@
             <div class="reserve__data">
               <label class="reserve__label" for="quantity">À combien de tournois GameOn avez-vous déjà participé
                 ?</label>
-              <input type="number" class="reserve__text" id="quantity" name="quantity" min="0" max="99">
+              <input type="number" class="reserve__text" id="quantity" name="quantity">
             </div>
 
             <p>Quelles villes ?</p>
-            <div class="reserve__data">
-              <div class="reserve__radios">
-                <input class="reserve__radio" type="radio" id="location1" name="location" value="New York" />
-                <label class="reserve__label-radio" for="location1">
-                  <span class="reserve__icon-radio"></span>
-                  New York</label>
+            <div class="reserve__data reserve__radios">
+              <input class="reserve__radio" type="radio" id="location1" name="location" value="New York" />
+              <label class="reserve__label-radio" for="location1">
+                <span class="reserve__icon-radio"></span>
+                New York</label>
 
-                <input class="reserve__radio" type="radio" id="location2" name="location" value="San Francisco" />
-                <label class="reserve__label-radio" for="location2">
-                  <span class="reserve__icon-radio"></span>
-                  San Francisco</label>
-                <input class="reserve__radio" type="radio" id="location3" name="location" value="Seattle" />
-                <label class="reserve__label-radio" for="location3">
-                  <span class="reserve__icon-radio"></span>
-                  Seattle</label>
-                <input class="reserve__radio" type="radio" id="location4" name="location" value="Chicago" />
-                <label class="reserve__label-radio" for="location4">
-                  <span class="reserve__icon-radio"></span>
-                  Chicago</label>
-                <input class="reserve__radio" type="radio" id="location5" name="location" value="Boston" />
-                <label class="reserve__label-radio" for="location5">
-                  <span class="reserve__icon-radio"></span>
-                  Boston</label>
-                <input class="reserve__radio" type="radio" id="location6" name="location" value="Portland" />
-                <label class="reserve__label-radio" for="location6">
-                  <span class="reserve__icon-radio"></span>
-                  Portland</label>
-              </div>
+              <input class="reserve__radio" type="radio" id="location2" name="location" value="San Francisco" />
+              <label class="reserve__label-radio" for="location2">
+                <span class="reserve__icon-radio"></span>
+                San Francisco</label>
+              <input class="reserve__radio" type="radio" id="location3" name="location" value="Seattle" />
+              <label class="reserve__label-radio" for="location3">
+                <span class="reserve__icon-radio"></span>
+                Seattle</label>
+              <input class="reserve__radio" type="radio" id="location4" name="location" value="Chicago" />
+              <label class="reserve__label-radio" for="location4">
+                <span class="reserve__icon-radio"></span>
+                Chicago</label>
+              <input class="reserve__radio" type="radio" id="location5" name="location" value="Boston" />
+              <label class="reserve__label-radio" for="location5">
+                <span class="reserve__icon-radio"></span>
+                Boston</label>
+              <input class="reserve__radio" type="radio" id="location6" name="location" value="Portland" />
+              <label class="reserve__label-radio" for="location6">
+                <span class="reserve__icon-radio"></span>
+                Portland</label>
             </div>
 
             <div class="reserve__data">
