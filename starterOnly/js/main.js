@@ -54,8 +54,30 @@ class FormValidation {
       let isValid = this.isValid();
 
       if (isValid) {
-        // All fields are valid
-        alert("Thank you");
+        // Create confirmed text message with close modal button
+        let closeButton = document.createElement("button");
+        closeButton.innerText = "Fermer";
+        closeButton.className = "reserve__submit-button";
+        closeButton.addEventListener(
+          "click",
+          () => (modal.className = "modal")
+        );
+
+        let confirmTextWrap = document.createElement("div");
+        confirmTextWrap.className = "reserve__text-wrap";
+
+        let confirmText = document.createElement("p");
+        confirmText.innerText = "Merci ! Votre réservation a été reçue.";
+        confirmText.className = "reserve__confirmed-text";
+
+        let confirmBox = document.createElement("div");
+        confirmBox.className = "reserve__confirmed";
+
+        confirmTextWrap.appendChild(confirmText);
+        confirmBox.appendChild(confirmTextWrap);
+        confirmBox.appendChild(closeButton);
+
+        this.form.appendChild(confirmBox);
       }
     });
   }
