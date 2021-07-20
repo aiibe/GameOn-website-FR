@@ -1,4 +1,4 @@
-// Nav Menu
+// MENU
 const menu = document.querySelector(".nav__menu");
 const menuToggler = document.querySelector(".nav__menu-toggle");
 
@@ -24,8 +24,157 @@ signupButton.addEventListener(
 
 // Close modal form
 modalClose.addEventListener("click", () => (modal.className = "modal"));
+modal.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    if (modal.className === "modal modal--open") {
+      modal.className = "modal";
+    }
+  }
+});
 
 // FORM VALIDATION
+class FormValidation {
+  constructor(form, fields) {
+    this.form = form;
+    this.fields = fields;
+  }
+
+  // Initiate listeners
+  init() {
+    this.onSubmit();
+    this.onChange();
+  }
+
+  // Add listener on submit
+  onSubmit() {
+    this.form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      // Validate all fields provided
+      let isValid = this.isValid();
+
+      if (isValid) {
+        // All fields are valid
+        alert("Thank you");
+      }
+    });
+  }
+
+  // Add listener on input changes
+  onChange() {
+    this.fields.forEach((name) => {
+      const currentField = this.form.elements[name];
+
+      // Runs validation on selective input fields
+      const shouldListen = ["text", "email", "date", "number"].includes(
+        currentField.type
+      );
+      if (shouldListen) {
+        currentField.addEventListener("input", () => {
+          this.validateField(currentField);
+        });
+      }
+    });
+  }
+
+  // Validate a field with HTML5 built-in validation
+  // Return boolean
+  validateField(field) {
+    if (field.type === undefined) {
+      // Custom validation for radio inputs
+      if (field[0].type === "radio") {
+        let radioCheck = field.value.trim().length > 0;
+        !radioCheck
+          ? this.manifest(
+              field[0].parentElement,
+              "Vous devez choisir une option."
+            )
+          : this.manifest(field[0].parentElement);
+        return radioCheck;
+      }
+    }
+
+    // HTML5 Built-in form validation
+    const { valid, tooShort, valueMissing, typeMismatch, tooLong } =
+      field.validity;
+    if (!valid) {
+      if (field.type === "checkbox") {
+        this.manifest(
+          field.parentElement,
+          "Vous devez vérifier que vous acceptez les termes et conditions."
+        );
+      }
+
+      if (field.type === "date") {
+        if (valueMissing) {
+          this.manifest(
+            field.parentElement,
+            "Vous devez mettre votre date de naissance."
+          );
+        }
+      }
+
+      if (field.type === "number") {
+        if (valueMissing) {
+          this.manifest(field.parentElement, "Vous devez mettre un chiffre.");
+        }
+      }
+
+      if (field.type === "text") {
+        if (tooShort || valueMissing) {
+          this.manifest(
+            field.parentElement,
+            "Veuillez entrer 2 caractères ou plus."
+          );
+        }
+
+        if (tooLong)
+          this.manifest(
+            field.parentElement,
+            "Veuillez entrer moins de caractères"
+          );
+      }
+
+      if (field.type === "email") {
+        if (valueMissing)
+          this.manifest(
+            field.parentElement,
+            "Vous devez mettre votre adresse email."
+          );
+        if (typeMismatch)
+          this.manifest(field.parentElement, "Format email incorrecte.");
+      }
+    } else {
+      // Clear error
+      this.manifest(field.parentElement);
+    }
+
+    return valid;
+  }
+
+  // Runs validation on all fields
+  isValid() {
+    let valid = [];
+
+    this.fields.forEach((name) => {
+      let currentField = this.form.elements[name];
+      valid.push(this.validateField(currentField));
+    });
+
+    // All fields are valid or not
+    return valid.length === this.fields.length && !valid.includes(false);
+  }
+
+  // Show errors if a message is provided (as second argument)
+  // Otherwise, clear error.
+  manifest(target, message) {
+    message
+      ? (target.dataset.error = message)
+      : target.removeAttribute("data-error");
+  }
+}
+
+// Target Form and its fields
 const signupForm = document.forms[0];
 const fields = [
   "first",
@@ -38,163 +187,7 @@ const fields = [
   "checkbox2",
 ];
 
-class FormValidation {
-  constructor(form, fields) {
-    this.form = form;
-    this.fields = fields;
-  }
-
-  init() {
-    this.onSubmit();
-    this.onFieldChange();
-  }
-
-  onSubmit() {
-    this.form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      let formFields = event.target.elements;
-      this.fields.forEach((field) => {
-        let currentField = formFields[field];
-
-        // Must pick one location
-        if (field === "location") {
-          return currentField.value.length === 0
-            ? this.manifest(
-                currentField[0].parentElement,
-                "Vous devez choisir une option."
-              )
-            : this.manifest(currentField[0].parentElement);
-        }
-
-        // Must accept Terms and conditions of use
-        if (field === "checkbox1") {
-          return !currentField.checked
-            ? this.manifest(
-                currentField.parentElement,
-                "Vous devez vérifier que vous acceptez les termes et conditions."
-              )
-            : this.manifest(currentField.parentElement);
-        }
-
-        this.validateField(currentField);
-      });
-    });
-  }
-
-  onFieldChange() {
-    let formFields = this.form.elements;
-    this.fields.forEach((field) => {
-      let currentField = formFields[field];
-
-      // Attach input event to text, email and number fields
-      if (["text", "email", "number"].includes(currentField.type)) {
-        currentField.addEventListener("input", () =>
-          this.validateField(currentField)
-        );
-      }
-
-      // Attach change event on date field
-      if (currentField.type === "date") {
-        currentField.addEventListener("change", () => {
-          this.validateField(currentField);
-        });
-      }
-    });
-  }
-
-  validateField(field) {
-    // Validate text fields
-    if (field.type === "text") {
-      // Set value to lowercase
-      // Remove spaces from both sides
-      let value = field.value.toLowerCase().trim();
-
-      // Must have more than 2 characters
-      if (value.length <= 2)
-        return this.manifest(
-          field.parentElement,
-          "Veuillez entrer 2 caractères ou plus."
-        );
-
-      // Must be alphabetic characters
-      const alpha = new RegExp("^[A-zÀ-ú ]+$");
-      if (!alpha.test(value))
-        return this.manifest(
-          field.parentElement,
-          "Veuillez entrer que des caractères alphabétiques"
-        );
-
-      // Tests passed: Remove any error messages
-      this.manifest(field.parentElement);
-    }
-
-    // Validate email field
-    if (field.type === "email") {
-      let value = field.value.toLowerCase().trim();
-
-      // Must have more than 4 characters
-      if (value.length === 0)
-        return this.manifest(
-          field.parentElement,
-          "Veuillez entrer votre adresse email"
-        );
-
-      // Must match email pattern HTML5 spec
-      const emailPattern =
-        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-      if (!emailPattern.test(value))
-        return this.manifest(
-          field.parentElement,
-          "Le format de votre adresse email est invalide"
-        );
-
-      // Tests passed: Remove any error messages
-      this.manifest(field.parentElement);
-    }
-
-    // Validate date field
-    if (field.type === "date") {
-      // Must not be empty
-      if (field.value.trim() === "") {
-        return this.manifest(
-          field.parentElement,
-          "Vous devez entrer votre date de naissance."
-        );
-      }
-
-      // Matching date pattern YYYY-MM-DD or YYYY-M-D
-      const datePattern = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
-      if (!datePattern.test(field.value))
-        return this.manifest(
-          field.parentElement,
-          "Le format de date est invalide"
-        );
-
-      // Tests passed: Remove any error messages
-      this.manifest(field.parentElement);
-    }
-
-    // Validate number field
-    if (field.type === "number") {
-      // Must not be empty
-      if (field.value.length === 0) {
-        return this.manifest(field.parentElement, "Veuillez entrer un chiffre");
-      }
-
-      // Tests passed: Remove any error messages
-      this.manifest(field.parentElement);
-    }
-  }
-
-  // Add error message to targeted node if any message provided
-  // Otherwise remove data-error attribute
-  manifest(target, message) {
-    message
-      ? (target.dataset.error = message)
-      : target.removeAttribute("data-error");
-  }
-}
-
+// Create an instance of our form validation class
+// Initiate validation
 const validation = new FormValidation(signupForm, fields);
 validation.init();

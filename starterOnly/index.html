@@ -56,27 +56,27 @@
       <div class="modal__body">
         <span class="modal__close"></span>
         <div class="modal__content">
-          <form name="reserve">
+          <form name="reserve" novalidate>
             <div class="reserve__data">
               <label class="reserve__label" for="first">Prénom</label>
-              <input class="reserve__text" type="text" id="first" name="first" />
+              <input class="reserve__text" type="text" id="first" name="first" minlength="2" maxlength="99" required />
             </div>
             <div class="reserve__data">
               <label class="reserve__label" for="last">Nom</label>
-              <input class="reserve__text" type="text" id="last" name="last" />
+              <input class="reserve__text" type="text" id="last" name="last" minlength="2" maxlength="99" required />
             </div>
             <div class="reserve__data">
               <label class="reserve__label" for="email">E-mail</label>
-              <input class="reserve__text" type="email" id="email" name="email" />
+              <input class="reserve__text" type="email" id="email" name="email" required />
             </div>
             <div class="reserve__data">
               <label class="reserve__label" for="birthdate">Date de naissance</label>
-              <input class="reserve__text" type="date" id="birthdate" name="birthdate" />
+              <input class="reserve__text" type="date" id="birthdate" name="birthdate" max="2020-01-01" required />
             </div>
             <div class="reserve__data">
               <label class="reserve__label" for="quantity">À combien de tournois GameOn avez-vous déjà participé
                 ?</label>
-              <input type="number" class="reserve__text" id="quantity" name="quantity">
+              <input type="number" class="reserve__text" id="quantity" name="quantity" min="0" required>
             </div>
 
             <p>Quelles villes ?</p>
@@ -109,11 +109,15 @@
             </div>
 
             <div class="reserve__data">
-              <input class="reserve__checkbox" type="checkbox" id="checkbox1" checked />
-              <label class="reserve__label-checkbox" for="checkbox1" required>
+
+              <input class="reserve__checkbox" type="checkbox" id="checkbox1" required />
+              <label class="reserve__label-checkbox" for="checkbox1">
                 <span class="reserve__icon-checkbox"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
+
+            </div>
+            <div class="reserve__data">
 
               <input class="reserve__checkbox" type="checkbox" id="checkbox2" />
               <label class="reserve__label-checkbox" for="checkbox2">
