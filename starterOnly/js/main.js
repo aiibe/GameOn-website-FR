@@ -22,8 +22,10 @@ signupButton.addEventListener(
   () => (modal.className = "modal modal--open")
 );
 
-// Close modal form
+// Close modal form on close icon clicked
 modalClose.addEventListener("click", () => (modal.className = "modal"));
+
+// Close modal form on overlay clicked
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {
     if (modal.className === "modal modal--open") {
