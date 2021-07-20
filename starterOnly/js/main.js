@@ -48,27 +48,32 @@ class FormValidation {
 
   // Add listener on submit
   onSubmit(callback) {
-    this.form.addEventListener("submit", (event) => {
-      event.preventDefault();
+    if (callback) {
+      this.form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-      // Validate all fields provided
-      let isValid = this.fields.every((name) => {
-        let currentField = this.form.elements[name];
-        return this.validateField(currentField);
-      });
-
-      if (isValid) {
-        // Prepare form data
-        let formData = new FormData();
-        this.fields.forEach((name) => {
+        // Validate all fields provided
+        let isValid = this.fields.every((name) => {
           let currentField = this.form.elements[name];
-          formData.append(name, currentField.value);
+          return this.validateField(currentField);
         });
 
-        // Export form data via callback
-        callback(formData);
-      }
-    });
+        if (isValid) {
+          // Prepare form data
+          let formData = new FormData();
+          this.fields.forEach((name) => {
+            let currentField = this.form.elements[name];
+            if (currentField.type === "checkbox") {
+              return formData.append(name, currentField.checked);
+            }
+            formData.append(name, currentField.value);
+          });
+
+          // Export form data via callback
+          callback(formData);
+        }
+      });
+    }
   }
 
   // Add listener on input changes
