@@ -7,6 +7,7 @@
   <meta name="description" content="Réservez vos billets sur GameOn">
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
   <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
   <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
@@ -60,11 +61,13 @@
           <form name="reserve" class="reserve" novalidate>
             <div class="reserve__data">
               <label class="reserve__label" for="first">Prénom</label>
-              <input class="reserve__text" type="text" id="first" name="first" minlength="2" maxlength="99" required />
+              <input class="reserve__text" type="text" id="first" name="first" minlength="2" maxlength="99" required
+                pattern="^[a-zA-ZÀ-ÿ-. ]*$" />
             </div>
             <div class="reserve__data">
               <label class="reserve__label" for="last">Nom</label>
-              <input class="reserve__text" type="text" id="last" name="last" minlength="2" maxlength="99" required />
+              <input class="reserve__text" type="text" id="last" name="last" minlength="2" maxlength="99" required
+                pattern="^[a-zA-ZÀ-ÿ-. ]*$" />
             </div>
             <div class="reserve__data">
               <label class="reserve__label" for="email">E-mail</label>
@@ -77,7 +80,7 @@
             <div class="reserve__data">
               <label class="reserve__label" for="quantity">À combien de tournois GameOn avez-vous déjà participé
                 ?</label>
-              <input type="number" class="reserve__text" id="quantity" name="quantity" min="0" required>
+              <input type="number" class="reserve__text" id="quantity" name="quantity" min="0" max="500" required>
             </div>
 
             <p>Quelles villes ?</p>
