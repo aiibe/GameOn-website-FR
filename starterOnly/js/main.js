@@ -205,6 +205,30 @@ class FormValidation {
 
     return valid;
   }
+
+  success(message) {
+    // Create confirmed text message with close modal button
+    let closeButton = document.createElement("button");
+    closeButton.innerText = "Fermer";
+    closeButton.className = "reserve__submit-button";
+    closeButton.addEventListener("click", () => (modal.className = "modal"));
+
+    let confirmTextWrap = document.createElement("div");
+    confirmTextWrap.className = "reserve__text-wrap";
+
+    let confirmText = document.createElement("p");
+    confirmText.innerText = message;
+    confirmText.className = "reserve__confirmed-text";
+
+    let confirmBox = document.createElement("div");
+    confirmBox.className = "reserve__confirmed";
+
+    confirmTextWrap.appendChild(confirmText);
+    confirmBox.appendChild(confirmTextWrap);
+    confirmBox.appendChild(closeButton);
+
+    this.form.appendChild(confirmBox);
+  }
 }
 
 // DOM Form and its fields
@@ -224,7 +248,12 @@ const fields = [
 const validation = new FormValidation(signupForm, fields);
 validation.run(); // Initiate validation
 validation.onSubmit((formData) => {
-  // Use valid data for API calls here
+  if (formData) {
+    // Use valid data for API calls here
+
+    // Confirmation
+    validation.success("Merci ! Votre réservation a été reçue.");
+  }
 
   // Debug
   console.log(formData, [...formData]);
